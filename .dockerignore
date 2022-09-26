@@ -1,0 +1,11 @@
+.github/
+.vscode/
+**/node_modules/
+**/build/
+**/coverage/
+**/storybook-static/
+**/.turbo/
+**/logs/
+**/*.log
+**/Dockerfile
+**/*.env
