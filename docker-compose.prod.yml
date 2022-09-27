@@ -1,0 +1,78 @@
+version: '3.7'
+
+services:
+    nginx:
+        container_name: nginx
+        image: nginx:latest
+        ports:
+            - 80:80
+            - 6006:6006
+        volumes:
+            - ./nginx.prod.conf:/etc/nginx/nginx.conf
+        env_file:
+            - .docker.env
+        networks:
+            - client
+            - storybook
+            - api
+        depends_on:
+            - client
+            - storybook
+            - api
+
+    client:
+        container_name: client
+        build:
+            dockerfile: ./apps/client/Dockerfile
+            context: .
+        env_file:
+            - ./apps/client/.env
+        networks:
+            - client
+        depends_on:
+            - api
+
+    storybook:
+        container_name: storybook
+        build:
+            dockerfile: ./packages/ui/Dockerfile
+            context: .
+        networks:
+            - storybook
+
+    api:
+        container_name: api
+        build:
+            dockerfile: ./apps/api/Dockerfile
+            context: .
+        env_file:
+            - ./apps/api/.env
+        networks:
+            - api
+            - postgres
+        depends_on:
+            - postgres
+
+    postgres:
+        container_name: postgres
+        image: postgres:latest
+        volumes:
+            - postgres-data:/var/lib/postgresql/data
+        env_file:
+            - .docker.env
+        networks:
+            - postgres
+
+volumes:
+    postgres-data:
+        driver: local
+
+networks:
+    client:
+        driver: bridge
+    storybook:
+        driver: bridge
+    api:
+        driver: bridge
+    postgres:
+        driver: bridge
