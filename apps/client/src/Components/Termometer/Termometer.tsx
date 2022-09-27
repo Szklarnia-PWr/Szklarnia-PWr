@@ -11,6 +11,10 @@ export const Termometer = () => {
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
+                padding: '45px',
+                border: 3,
+                borderColor: 'primary.main',
+                borderRadius: '16px',
             }}
         >
             <Typography variant='h1' component='h1'>
@@ -18,7 +22,7 @@ export const Termometer = () => {
             </Typography>
             <Typography variant='h4' component='h4'>
                 humidity: {humVal}%<br />
-                pressure: {pressVal} hPa
+                pressure: {pressVal}hPa
             </Typography>
         </Box>
     );
