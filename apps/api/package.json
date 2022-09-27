@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "@szklarnia-pwr/database": "*",
+        "@szklarnia-pwr/dto": "*",
         "@nestjs/common": "^8.0.0",
         "@nestjs/config": "^2.2.0",
         "@nestjs/core": "^8.0.0",
