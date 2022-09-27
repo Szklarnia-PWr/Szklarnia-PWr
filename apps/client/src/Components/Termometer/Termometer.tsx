@@ -6,12 +6,12 @@ export const Termometer = () => {
     const pressVal = 42;
     return (
         <Box
+            p={{ xs: '15px', md: '45px' }}
             sx={{
                 position: 'fixed',
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
-                padding: '45px',
                 border: 3,
                 borderColor: 'primary.main',
                 borderRadius: '16px',
