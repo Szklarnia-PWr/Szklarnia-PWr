@@ -40,11 +40,19 @@ export class DeviceController {
         return this.deviceService.updateDevice(device, dto);
     }
 
+    @Post(':id/regenerate')
+    @ApiParam({ name: 'id', example: randomUUID() })
+    async regenerateDeviceApiKey(@Param('id', ParseUUIDPipe) id: string) {
+        const device = await this.deviceService.getByID(id);
+
+        return this.deviceService.regenerateDeviceApiKey(device);
+    }
+
     @Delete(':id')
     @ApiParam({ name: 'id', example: randomUUID() })
     async deleteDevice(@Param('id', ParseUUIDPipe) id: string) {
         const device = await this.deviceService.getByID(id);
 
-        return this.deviceService.deleteDevice(device);
+        await this.deviceService.deleteDevice(device);
     }
 }

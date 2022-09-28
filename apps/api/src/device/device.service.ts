@@ -7,7 +7,11 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { Device } from '@szklarnia-pwr/database';
-import { CreateDeviceDto, UpdateDeviceDto } from '@szklarnia-pwr/dto';
+import {
+    CreateDeviceDto,
+    RegenerateApiKeyDto,
+    UpdateDeviceDto,
+} from '@szklarnia-pwr/dto';
 
 @Injectable()
 export class DeviceService {
@@ -48,6 +52,12 @@ export class DeviceService {
             device.name = dto.name;
         }
         return this.devices.save(device);
+    }
+
+    async regenerateDeviceApiKey(device: Device): Promise<RegenerateApiKeyDto> {
+        const key = device.generateRandomApiKey();
+        await this.devices.save(device);
+        return { key };
     }
 
     deleteDevice(device: Device) {
