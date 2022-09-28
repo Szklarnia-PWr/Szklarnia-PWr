@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 
-export const Termometer = () => {
+export const Thermometer = () => {
     const tempVal = 42;
     const humVal = 74;
     const pressVal = 42;
