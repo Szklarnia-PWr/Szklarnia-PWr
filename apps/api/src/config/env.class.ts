@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import {
     IsBooleanString,
     IsEnum,
@@ -18,8 +19,9 @@ export class Env {
 
     // APP
 
+    @Type(() => Number)
     @IsNumber()
-    PORT: number;
+    PORT = 4000;
 
     @IsString()
     BASE_PATH = '/';
