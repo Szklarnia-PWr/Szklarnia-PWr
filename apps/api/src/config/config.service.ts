@@ -32,6 +32,10 @@ export class ConfigService {
         return this.env.get<string>('CLIENT_CORS_WILDCARD_URL');
     }
 
+    get COOKIE_SECRET() {
+        return this.env.get<string>('COOKIE_SECRET');
+    }
+
     databaseCredentials(): TypeOrmModuleOptions {
         return {
             type: 'postgres',
