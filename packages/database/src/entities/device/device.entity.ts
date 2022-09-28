@@ -1,6 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { randomUUID } from 'crypto';
+import { compareSync, encodeBase64, hashSync } from 'bcryptjs';
+import { randomBytes, randomUUID } from 'crypto';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Exclude } from 'class-transformer';
 
 @Entity('devices')
 export class Device {
@@ -16,7 +18,20 @@ export class Device {
     @Column('text', { default: '' })
     description: string;
 
+    @ApiProperty({ example: hashSync(randomUUID()), description: 'Bcrypt hashed API key' })
+    @Column({ nullable: true, default: null })
+    @Exclude()
+    apiKeyHash?: string;
+
     measurements: any[]; // TODO: API Measurement Module (#33)
 
-    api_keys: any[]; // TODO: API Key Module (#24)
+    verifyKey(apiKey: string) {
+        return compareSync(apiKey, this.apiKeyHash);
+    }
+
+    generateRandomApiKey() {
+        const apiKey = randomBytes(32).toString('base64url');
+        this.apiKeyHash = hashSync(apiKey);
+        return apiKey;
+    }
 }

@@ -15,7 +15,7 @@ export class User {
     username: string;
 
     @ApiProperty({
-        example: '$2a$10$7.HeIFEvt4fCgdgZmzo/RuOwTN7Oe8pvyZJUtrSwvA75yAFcye77C',
+        example: hashSync('admin123'),
         description: 'Bcrypt hashed password',
     })
     @Column()
