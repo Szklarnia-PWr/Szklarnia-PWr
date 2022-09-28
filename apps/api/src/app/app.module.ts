@@ -4,7 +4,9 @@ import * as passport from 'passport';
 
 import { AuthModule } from '../auth';
 import { ConfigModule, ConfigService, NodeEnv } from '../config';
+import { DataModule } from '../data';
 import { DatabaseModule } from '../database';
+import { DatasetModule } from '../dataset';
 import { DeviceModule } from '../device';
 import { UserModule } from '../user';
 import { Time } from '../utils';
@@ -17,6 +19,8 @@ import { AppController, AppService } from '.';
         UserModule,
         DeviceModule,
         AuthModule,
+        DatasetModule,
+        DataModule,
     ],
     controllers: [AppController],
     providers: [AppService],

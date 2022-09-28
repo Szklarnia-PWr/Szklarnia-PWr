@@ -1,5 +1,5 @@
 import {
-    BadRequestException,
+    ConflictException,
     Injectable,
     NotFoundException,
 } from '@nestjs/common';
@@ -54,7 +54,7 @@ export class DeviceService {
 
     async createDevice(dto: CreateDeviceDto) {
         if (await this.devices.count({ where: { name: dto.name } })) {
-            throw new BadRequestException();
+            throw new ConflictException();
         }
 
         const device = this.devices.create(dto);
@@ -65,7 +65,7 @@ export class DeviceService {
         if (dto.description) device.description = dto.description;
         if (dto.name && dto.name !== device.name) {
             if (await this.devices.count({ where: { name: dto.name } })) {
-                throw new BadRequestException();
+                throw new ConflictException();
             }
             device.name = dto.name;
         }
