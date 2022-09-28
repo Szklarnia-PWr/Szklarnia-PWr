@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService, NodeEnv } from '../config';
 import { DatabaseModule } from '../database';
 import { DeviceModule } from '../device';
 import { UserModule } from '../user';
+import { Time } from '../utils';
 import { AppController, AppService } from '.';
 
 @Module({
@@ -31,6 +32,7 @@ export class AppModule {
                     resave: false,
                     saveUninitialized: false,
                     cookie: {
+                        maxAge: 1 * Time.HOUR,
                         httpOnly: true,
                         secure: 'auto',
                         sameSite:
