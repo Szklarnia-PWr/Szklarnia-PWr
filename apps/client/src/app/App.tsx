@@ -1,13 +1,16 @@
-import { Footer, Navbar, Termometer } from '../components';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import './App.css';
+import { Footer, Navbar, Thermometer } from '../components';
 
 export const App = () => {
     return (
-        <div className='App'>
+        <Router>
             <Navbar />
-            <Termometer />
+            <Routes>
+                <Route path='/' element={<Thermometer />}></Route>
+                <Route path='/statistics' element={<Thermometer />}></Route>
+            </Routes>
             <Footer />
-        </div>
+        </Router>
     );
 };

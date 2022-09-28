@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 
-export const Termometer = () => {
+export const Thermometer = () => {
     const tempVal = 42;
     const humVal = 74;
     const pressVal = 42;
@@ -15,6 +15,7 @@ export const Termometer = () => {
                 border: 3,
                 borderColor: 'primary.main',
                 borderRadius: '16px',
+                textAlign: 'center',
             }}
         >
             <Typography variant='h1' component='h1'>
