@@ -1,4 +1,4 @@
-import { Footer, Navbar, Termometer } from '../Components';
+import { Footer, Navbar, Termometer } from '../components';
 
 import './App.css';
 
