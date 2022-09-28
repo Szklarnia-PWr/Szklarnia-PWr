@@ -14,10 +14,6 @@ export class User {
     @Column()
     username: string;
 
-    @ApiProperty({
-        example: hashSync('admin123'),
-        description: 'Bcrypt hashed password',
-    })
     @Column()
     @Exclude()
     passwordHash: string;

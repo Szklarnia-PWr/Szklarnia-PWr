@@ -1,4 +1,10 @@
-import { IsBooleanString, IsEnum, IsNumber, IsString } from 'class-validator';
+import {
+    IsBooleanString,
+    IsEnum,
+    IsNumber,
+    IsString,
+    MinLength,
+} from 'class-validator';
 
 export enum NodeEnv {
     DEVELOPMENT = 'development',
@@ -25,6 +31,12 @@ export class Env {
 
     @IsString()
     CLIENT_CORS_WILDCARD_URL: string;
+
+    // SESSION
+
+    @IsString()
+    @MinLength(32)
+    COOKIE_SECRET: string;
 
     // DATABASE
 

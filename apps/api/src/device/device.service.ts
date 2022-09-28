@@ -4,12 +4,13 @@ import {
     NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { createHash } from 'crypto';
 import { Repository } from 'typeorm';
 
 import { Device } from '@szklarnia-pwr/database';
 import {
+    ApiKeyDto,
     CreateDeviceDto,
-    RegenerateApiKeyDto,
     UpdateDeviceDto,
 } from '@szklarnia-pwr/dto';
 
@@ -35,17 +36,34 @@ export class DeviceService {
         return device;
     }
 
+    async getByApiKey(apiKey: string) {
+        const hash = createHash('sha256').update(apiKey).digest('base64');
+
+        const device = await this.devices.findOne({
+            where: { apiKeyHash: hash },
+        });
+
+        if (!device) throw new NotFoundException();
+
+        return device;
+    }
+
     getAll() {
         return this.devices.find();
     }
 
-    createDevice(dto: CreateDeviceDto) {
-        return this.devices.save(dto);
+    async createDevice(dto: CreateDeviceDto) {
+        if (await this.devices.count({ where: { name: dto.name } })) {
+            throw new BadRequestException();
+        }
+
+        const device = this.devices.create(dto);
+        return this.devices.save(device);
     }
 
     async updateDevice(device: Device, dto: UpdateDeviceDto) {
         if (dto.description) device.description = dto.description;
-        if (dto.name) {
+        if (dto.name && dto.name !== device.name) {
             if (await this.devices.count({ where: { name: dto.name } })) {
                 throw new BadRequestException();
             }
@@ -54,7 +72,7 @@ export class DeviceService {
         return this.devices.save(device);
     }
 
-    async regenerateDeviceApiKey(device: Device): Promise<RegenerateApiKeyDto> {
+    async regenerateDeviceApiKey(device: Device): Promise<ApiKeyDto> {
         const key = device.generateRandomApiKey();
         await this.devices.save(device);
         return { key };
