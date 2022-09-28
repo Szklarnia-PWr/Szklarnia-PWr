@@ -33,6 +33,7 @@ async function bootstrap() {
         .setTitle('API Docs')
         .addServer(env.BASE_PATH)
         .addCookieAuth()
+        .addApiKey({ type: 'apiKey', name: 'X-API-Key' }, 'X-API-Key')
         .build();
 
     const document = SwaggerModule.createDocument(app, config);
