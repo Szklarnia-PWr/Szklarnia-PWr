@@ -21,8 +21,11 @@
         "@mui/material": "^5.10.7",
         "@szklarnia-pwr/database": "*",
         "@szklarnia-pwr/dto": "*",
+        "add": "^2.0.6",
         "react": "^18.0.0",
-        "react-dom": "^18.0.0"
+        "react-dom": "^18.0.0",
+        "react-router-dom": "6",
+        "yarn": "^1.22.19"
     },
     "devDependencies": {
         "@storybook/addon-actions": "^6.5.8",
