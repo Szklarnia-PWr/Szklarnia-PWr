@@ -21,8 +21,6 @@ export class Device {
     @Exclude()
     apiKeyHash?: string;
 
-    measurements: any[]; // TODO: API Measurement Module (#33)
-
     verifyKey(apiKey: string) {
         const hash = createHash('sha256').update(apiKey).digest('base64');
         return this.apiKeyHash === hash;
