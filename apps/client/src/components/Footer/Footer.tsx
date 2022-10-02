@@ -1,17 +1,16 @@
 import {
-    AppBar,
     Box,
     Container,
     Link,
     Toolbar,
     Typography,
+    useTheme,
 } from '@mui/material';
 
 export const Footer = () => {
+    const theme = useTheme();
     return (
-        <AppBar
-            sx={{ display: 'flex', bottom: '0', top: 'calc(100vh - 56px)' }}
-        >
+        <Box sx={{ backgroundColor: theme.palette.primary.main }}>
             <Container maxWidth='xl'>
                 <Toolbar disableGutters>
                     <Typography
@@ -24,7 +23,7 @@ export const Footer = () => {
                             flexGrow: 1,
                             fontFamily: 'monospace',
                             fontWeight: 700,
-                            color: 'inherit',
+                            color: 'white',
                             textDecoration: 'none',
                         }}
                     >
@@ -60,6 +59,6 @@ export const Footer = () => {
                     </Box>
                 </Toolbar>
             </Container>
-        </AppBar>
+        </Box>
     );
 };
