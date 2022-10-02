@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import { Charts, Footer, Navbar, Thermometer } from '../components';
+import { Footer, Navbar, Thermometer } from '../components';
+import { Statistics } from '../components/Statistics';
 
 export const App = () => {
     return (
@@ -8,7 +9,7 @@ export const App = () => {
             <Navbar />
             <Routes>
                 <Route path='/' element={<Thermometer />}></Route>
-                <Route path='/statistics' element={<Charts />}></Route>
+                <Route path='/statistics' element={<Statistics />}></Route>
             </Routes>
             <Footer />
         </Router>
