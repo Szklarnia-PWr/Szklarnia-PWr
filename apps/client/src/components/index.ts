@@ -3,3 +3,4 @@ export * from './Thermometer';
 export * from './Footer';
 export * from './Charts';
 export * from './Highscores';
+export * from './TimeSwitch';

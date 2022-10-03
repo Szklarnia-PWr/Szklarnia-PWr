@@ -2,7 +2,7 @@ import { Container, Tab, Tabs } from '@mui/material';
 import React from 'react';
 
 export const TimeSwitch = () => {
-    const timeRanges = ['day', 'week', 'month', 'year', 'all measurements'];
+    const timeRanges = ['day', 'week', 'month', 'year'];
     const [timeRange, setTimeRange] = React.useState(0);
     const handleTimeChange = (
         event: React.SyntheticEvent,

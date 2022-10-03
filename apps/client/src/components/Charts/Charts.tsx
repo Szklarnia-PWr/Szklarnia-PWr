@@ -64,6 +64,7 @@ const data = [
 
 export const Charts = () => {
     const theme = useTheme();
+
     return (
         <Container maxWidth='xl'>
             <Box sx={{ marginBottom: '5rem' }}>
