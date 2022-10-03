@@ -1,0 +1,10 @@
+.tile {
+    min-height: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* text-align: center; */
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    
+}
