@@ -62,6 +62,37 @@ const data = [
     },
 ];
 
+const highs = [
+    {
+        parameter: 'Temperature [°C]',
+        maxTime: 43,
+        maxEver: 45,
+        minTime: 15,
+        minEver: 9,
+    },
+    {
+        parameter: 'Humidity [%]',
+        maxTime: 56,
+        maxEver: 81,
+        minTime: 43,
+        minEver: 43,
+    },
+    {
+        parameter: 'Pressure [hPa]',
+        maxTime: 1002,
+        maxEver: 1201,
+        minTime: 999,
+        minEver: 994,
+    },
+    {
+        parameter: 'Battery [%]',
+        maxTime: 93,
+        maxEver: 100,
+        minTime: 86,
+        minEver: 86,
+    },
+];
+
 export const Charts = () => {
     const theme = useTheme();
 
@@ -119,9 +150,14 @@ export const Charts = () => {
                         display: { xs: 'block', md: 'none' },
                     }}
                 >
-                    <Typography>Max: 2137 / Min: 420</Typography>
+                    <Typography>
+                        Max: {highs[0].maxTime} / Min: {highs[0].minTime}
+                    </Typography>
 
-                    <Typography>Max ever: 2137 / Minever : 420</Typography>
+                    <Typography>
+                        Max ever: {highs[0].maxEver} / Min ever :{' '}
+                        {highs[0].minEver}
+                    </Typography>
                 </Paper>
             </Box>
 
@@ -155,9 +191,14 @@ export const Charts = () => {
                         display: { xs: 'block', md: 'none' },
                     }}
                 >
-                    <Typography>Max: 2137 / Min: 420</Typography>
+                    <Typography>
+                        Max: {highs[1].maxTime} / Min: {highs[1].minTime}
+                    </Typography>
 
-                    <Typography>Max ever: 2137 / Minever : 420</Typography>
+                    <Typography>
+                        Max ever: {highs[1].maxEver} / Min ever :{' '}
+                        {highs[1].minEver}
+                    </Typography>
                 </Paper>
             </Box>
 
@@ -191,9 +232,14 @@ export const Charts = () => {
                         display: { xs: 'block', md: 'none' },
                     }}
                 >
-                    <Typography>Max: 2137 / Min: 420</Typography>
+                    <Typography>
+                        Max: {highs[2].maxTime} / Min: {highs[2].minTime}
+                    </Typography>
 
-                    <Typography>Max ever: 2137 / Minever : 420</Typography>
+                    <Typography>
+                        Max ever: {highs[2].maxEver} / Min ever :{' '}
+                        {highs[2].minEver}
+                    </Typography>
                 </Paper>
             </Box>
 
@@ -227,9 +273,14 @@ export const Charts = () => {
                         display: { xs: 'block', md: 'none' },
                     }}
                 >
-                    <Typography>Max: 2137 / Min: 420</Typography>
+                    <Typography>
+                        Max: {highs[3].maxTime} / Min: {highs[3].minTime}
+                    </Typography>
 
-                    <Typography>Max ever: 2137 / Minever : 420</Typography>
+                    <Typography>
+                        Max ever: {highs[3].maxEver} / Min ever :{' '}
+                        {highs[3].minEver}
+                    </Typography>
                 </Paper>
             </Box>
         </Container>
