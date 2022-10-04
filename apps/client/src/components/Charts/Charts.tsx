@@ -1,4 +1,4 @@
-import { Box, Container, useTheme } from '@mui/material';
+import { Box, Container, Paper, Typography, useTheme } from '@mui/material';
 import React from 'react';
 import {
     Area,
@@ -113,6 +113,16 @@ export const Charts = () => {
                         />
                     </AreaChart>
                 </ResponsiveContainer>
+                <Paper
+                    sx={{
+                        textAlign: 'center',
+                        display: { xs: 'block', md: 'none' },
+                    }}
+                >
+                    <Typography>Max: 2137 / Min: 420</Typography>
+
+                    <Typography>Max ever: 2137 / Minever : 420</Typography>
+                </Paper>
             </Box>
 
             <Box sx={{ marginBottom: '5rem' }}>
@@ -139,6 +149,16 @@ export const Charts = () => {
                         />
                     </AreaChart>
                 </ResponsiveContainer>
+                <Paper
+                    sx={{
+                        textAlign: 'center',
+                        display: { xs: 'block', md: 'none' },
+                    }}
+                >
+                    <Typography>Max: 2137 / Min: 420</Typography>
+
+                    <Typography>Max ever: 2137 / Minever : 420</Typography>
+                </Paper>
             </Box>
 
             <Box sx={{ marginBottom: '5rem' }}>
@@ -165,6 +185,16 @@ export const Charts = () => {
                         />
                     </AreaChart>
                 </ResponsiveContainer>
+                <Paper
+                    sx={{
+                        textAlign: 'center',
+                        display: { xs: 'block', md: 'none' },
+                    }}
+                >
+                    <Typography>Max: 2137 / Min: 420</Typography>
+
+                    <Typography>Max ever: 2137 / Minever : 420</Typography>
+                </Paper>
             </Box>
 
             <Box sx={{ marginBottom: '5rem' }}>
@@ -191,6 +221,16 @@ export const Charts = () => {
                         />
                     </AreaChart>
                 </ResponsiveContainer>
+                <Paper
+                    sx={{
+                        textAlign: 'center',
+                        display: { xs: 'block', md: 'none' },
+                    }}
+                >
+                    <Typography>Max: 2137 / Min: 420</Typography>
+
+                    <Typography>Max ever: 2137 / Minever : 420</Typography>
+                </Paper>
             </Box>
         </Container>
     );

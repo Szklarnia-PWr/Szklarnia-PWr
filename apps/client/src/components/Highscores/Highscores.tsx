@@ -43,7 +43,13 @@ export const Highscores = () => {
     ];
     const timeRange = 'week';
     return (
-        <Container sx={{ marginY: '3rem' }} maxWidth='xl'>
+        <Container
+            sx={{
+                marginY: '3rem',
+                display: { xs: 'none', md: 'block' },
+            }}
+            maxWidth='xl'
+        >
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label='simple table'>
                     <TableHead>
