@@ -4,7 +4,7 @@ import { Charts, Highscores, TimeSwitch } from '../../components';
 
 export const Statistics = () => {
     return (
-        <Box sx={{ marginY: '5rem' }}>
+        <Box sx={{ marginBottom: '5rem', marginTop: '2rem', marginX: '0' }}>
             <TimeSwitch />
             <Highscores />
             <Charts />

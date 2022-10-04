@@ -1,4 +1,11 @@
-import { Box, Container, Paper, Typography, useTheme } from '@mui/material';
+import {
+    Box,
+    Container,
+    Grid,
+    Paper,
+    Typography,
+    useTheme,
+} from '@mui/material';
 import React from 'react';
 import {
     Area,
@@ -146,18 +153,33 @@ export const Charts = () => {
                 </ResponsiveContainer>
                 <Paper
                     sx={{
+                        marginX: '2.4rem',
                         textAlign: 'center',
                         display: { xs: 'block', md: 'none' },
                     }}
                 >
-                    <Typography>
-                        Max: {highs[0].maxTime} / Min: {highs[0].minTime}
-                    </Typography>
-
-                    <Typography>
-                        Max ever: {highs[0].maxEver} / Min ever :{' '}
-                        {highs[0].minEver}
-                    </Typography>
+                    <Grid container spacing={0.2}>
+                        <Grid item xs={2} />
+                        <Grid item xs={4}>
+                            <Typography>Max: {highs[0].maxTime}</Typography>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Typography>
+                                Max ever: {highs[0].maxEver}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={2} />
+                        <Grid item xs={2} />
+                        <Grid item xs={4}>
+                            <Typography>Min: {highs[0].minTime}</Typography>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Typography>
+                                Min ever: {highs[0].minEver}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={2} />
+                    </Grid>
                 </Paper>
             </Box>
 
