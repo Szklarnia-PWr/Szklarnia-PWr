@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService as NestConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { RedisOptions } from 'ioredis';
 
 import { Env, NodeEnv } from '.';
 
@@ -34,6 +35,18 @@ export class ConfigService {
 
     get COOKIE_SECRET() {
         return this.env.get<string>('COOKIE_SECRET');
+    }
+
+    get REDIS_URL() {
+        return this.env.get<string>('REDIS_URL');
+    }
+
+    redisOptions(): RedisOptions {
+        return {
+            tls: this.REDIS_URL.startsWith('rediss://')
+                ? { requestCert: true, rejectUnauthorized: false }
+                : undefined,
+        };
     }
 
     databaseCredentials(): TypeOrmModuleOptions {
