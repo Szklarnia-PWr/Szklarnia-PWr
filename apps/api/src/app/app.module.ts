@@ -38,11 +38,8 @@ export class AppModule {
                     cookie: {
                         maxAge: 1 * Time.HOUR,
                         httpOnly: true,
-                        secure: 'auto',
-                        sameSite:
-                            this.config.NODE_ENV === NodeEnv.DEVELOPMENT
-                                ? undefined
-                                : 'none',
+                        secure: this.config.NODE_ENV === NodeEnv.PRODUCTION,
+                        sameSite: false
                     },
                 }),
                 passport.initialize(),
