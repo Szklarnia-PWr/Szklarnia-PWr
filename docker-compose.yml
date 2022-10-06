@@ -13,6 +13,7 @@ services:
             - client
             - storybook
             - api
+            - redis
             - postgres
         depends_on:
             - client
@@ -58,9 +59,33 @@ services:
             - ./apps/api/.env
         networks:
             - api
+            - redis
             - postgres
         depends_on:
+            - redis
             - postgres
+
+    redis:
+        container_name: redis
+        image: redis:latest
+        ports:
+            - 6379:6379
+        volumes:
+            - redis-data:/data
+        networks:
+            - redis
+
+    redis-commander:
+        container_name: redis-commander
+        image: rediscommander/redis-commander:latest
+        ports:
+            - 8081:8081
+        environment:
+            - REDIS_HOSTS=local:redis:6379
+        networks:
+            - redis
+        depends_on:
+            - redis
 
     postgres:
         container_name: postgres
@@ -93,6 +118,8 @@ services:
             - postgres
 
 volumes:
+    redis-data:
+        driver: local
     postgres-data:
         driver: local
     pgadmin-data:
@@ -104,6 +131,8 @@ networks:
     storybook:
         driver: bridge
     api:
+        driver: bridge
+    redis:
         driver: bridge
     postgres:
         driver: bridge
