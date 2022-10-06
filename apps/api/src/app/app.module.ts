@@ -8,6 +8,7 @@ import { DataModule } from '../data';
 import { DatabaseModule } from '../database';
 import { DatasetModule } from '../dataset';
 import { DeviceModule } from '../device';
+import { RedisModule } from '../redis';
 import { UserModule } from '../user';
 import { Time } from '../utils';
 import { AppController, AppService } from '.';
@@ -15,6 +16,7 @@ import { AppController, AppService } from '.';
 @Module({
     imports: [
         ConfigModule,
+        RedisModule,
         DatabaseModule,
         UserModule,
         DeviceModule,
@@ -39,7 +41,7 @@ export class AppModule {
                         maxAge: 1 * Time.HOUR,
                         httpOnly: true,
                         secure: this.config.NODE_ENV === NodeEnv.PRODUCTION,
-                        sameSite: false
+                        sameSite: false,
                     },
                 }),
                 passport.initialize(),
