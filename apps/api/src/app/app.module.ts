@@ -39,7 +39,7 @@ export class AppModule {
                         maxAge: 1 * Time.HOUR,
                         httpOnly: true,
                         secure: this.config.NODE_ENV === NodeEnv.PRODUCTION,
-                        sameSite: false
+                        sameSite: false,
                     },
                 }),
                 passport.initialize(),
