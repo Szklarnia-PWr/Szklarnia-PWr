@@ -152,6 +152,7 @@ export const Charts = () => {
                     </AreaChart>
                 </ResponsiveContainer>
                 <Paper
+                    elevation={0}
                     sx={{
                         marginX: '2.4rem',
                         textAlign: 'center',
@@ -208,19 +209,35 @@ export const Charts = () => {
                     </AreaChart>
                 </ResponsiveContainer>
                 <Paper
+                    elevation={0}
                     sx={{
+                        marginX: '2.4rem',
                         textAlign: 'center',
                         display: { xs: 'block', md: 'none' },
                     }}
                 >
-                    <Typography>
-                        Max: {highs[1].maxTime} / Min: {highs[1].minTime}
-                    </Typography>
-
-                    <Typography>
-                        Max ever: {highs[1].maxEver} / Min ever :{' '}
-                        {highs[1].minEver}
-                    </Typography>
+                    <Grid container spacing={0.2}>
+                        <Grid item xs={2} />
+                        <Grid item xs={4}>
+                            <Typography>Max: {highs[0].maxTime}</Typography>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Typography>
+                                Max ever: {highs[0].maxEver}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={2} />
+                        <Grid item xs={2} />
+                        <Grid item xs={4}>
+                            <Typography>Min: {highs[0].minTime}</Typography>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Typography>
+                                Min ever: {highs[0].minEver}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={2} />
+                    </Grid>
                 </Paper>
             </Box>
 
@@ -249,19 +266,35 @@ export const Charts = () => {
                     </AreaChart>
                 </ResponsiveContainer>
                 <Paper
+                    elevation={0}
                     sx={{
+                        marginX: '2.4rem',
                         textAlign: 'center',
                         display: { xs: 'block', md: 'none' },
                     }}
                 >
-                    <Typography>
-                        Max: {highs[2].maxTime} / Min: {highs[2].minTime}
-                    </Typography>
-
-                    <Typography>
-                        Max ever: {highs[2].maxEver} / Min ever :{' '}
-                        {highs[2].minEver}
-                    </Typography>
+                    <Grid container spacing={0.2}>
+                        <Grid item xs={2} />
+                        <Grid item xs={4}>
+                            <Typography>Max: {highs[0].maxTime}</Typography>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Typography>
+                                Max ever: {highs[0].maxEver}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={2} />
+                        <Grid item xs={2} />
+                        <Grid item xs={4}>
+                            <Typography>Min: {highs[0].minTime}</Typography>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Typography>
+                                Min ever: {highs[0].minEver}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={2} />
+                    </Grid>
                 </Paper>
             </Box>
 
@@ -290,19 +323,35 @@ export const Charts = () => {
                     </AreaChart>
                 </ResponsiveContainer>
                 <Paper
+                    elevation={0}
                     sx={{
+                        marginX: '2.4rem',
                         textAlign: 'center',
                         display: { xs: 'block', md: 'none' },
                     }}
                 >
-                    <Typography>
-                        Max: {highs[3].maxTime} / Min: {highs[3].minTime}
-                    </Typography>
-
-                    <Typography>
-                        Max ever: {highs[3].maxEver} / Min ever :{' '}
-                        {highs[3].minEver}
-                    </Typography>
+                    <Grid container spacing={0.2}>
+                        <Grid item xs={2} />
+                        <Grid item xs={4}>
+                            <Typography>Max: {highs[0].maxTime}</Typography>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Typography>
+                                Max ever: {highs[0].maxEver}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={2} />
+                        <Grid item xs={2} />
+                        <Grid item xs={4}>
+                            <Typography>Min: {highs[0].minTime}</Typography>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Typography>
+                                Min ever: {highs[0].minEver}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={2} />
+                    </Grid>
                 </Paper>
             </Box>
         </Container>
