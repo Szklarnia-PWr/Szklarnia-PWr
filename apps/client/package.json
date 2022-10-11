@@ -23,7 +23,8 @@
         "@szklarnia-pwr/dto": "*",
         "react": "^18.0.0",
         "react-dom": "^18.0.0",
-        "react-router-dom": "6"
+        "react-router-dom": "6",
+        "recharts": "^2.1.14"
     },
     "devDependencies": {
         "@storybook/addon-actions": "^6.5.8",
