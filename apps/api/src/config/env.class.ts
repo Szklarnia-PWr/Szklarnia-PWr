@@ -40,6 +40,11 @@ export class Env {
     @MinLength(32)
     COOKIE_SECRET: string;
 
+    // REDIS
+
+    @IsString()
+    REDIS_URL: string;
+
     // DATABASE
 
     @IsString()

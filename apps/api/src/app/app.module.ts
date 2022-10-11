@@ -1,5 +1,7 @@
-import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { Inject, MiddlewareConsumer, Module } from '@nestjs/common';
+import * as ConnectRedis from 'connect-redis';
 import * as session from 'express-session';
+import Redis from 'ioredis';
 import * as passport from 'passport';
 
 import { AuthModule } from '../auth';
@@ -8,13 +10,17 @@ import { DataModule } from '../data';
 import { DatabaseModule } from '../database';
 import { DatasetModule } from '../dataset';
 import { DeviceModule } from '../device';
+import { REDIS, RedisModule } from '../redis';
 import { UserModule } from '../user';
 import { Time } from '../utils';
 import { AppController, AppService } from '.';
 
+const RedisStore = ConnectRedis(session);
+
 @Module({
     imports: [
         ConfigModule,
+        RedisModule,
         DatabaseModule,
         UserModule,
         DeviceModule,
@@ -26,7 +32,10 @@ import { AppController, AppService } from '.';
     providers: [AppService],
 })
 export class AppModule {
-    constructor(private config: ConfigService) {}
+    constructor(
+        @Inject(REDIS) private redis_client: Redis,
+        private config: ConfigService,
+    ) {}
 
     configure(consumer: MiddlewareConsumer) {
         consumer
@@ -41,6 +50,7 @@ export class AppModule {
                         secure: this.config.NODE_ENV === NodeEnv.PRODUCTION,
                         sameSite: false,
                     },
+                    store: new RedisStore({ client: this.redis_client }),
                 }),
                 passport.initialize(),
                 passport.session(),
