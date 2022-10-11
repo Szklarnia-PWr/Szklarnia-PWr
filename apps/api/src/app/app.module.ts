@@ -1,4 +1,6 @@
 import { Inject, MiddlewareConsumer, Module } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import * as ConnectRedis from 'connect-redis';
 import * as session from 'express-session';
 import Redis from 'ioredis';
@@ -22,6 +24,11 @@ const RedisStore = ConnectRedis(session);
         ConfigModule,
         RedisModule,
         DatabaseModule,
+        ThrottlerModule.forRootAsync({
+            imports: [ConfigModule],
+            inject: [ConfigService],
+            useFactory: (config: ConfigService) => config.throttlerOptions(),
+        }),
         UserModule,
         DeviceModule,
         AuthModule,
@@ -29,7 +36,7 @@ const RedisStore = ConnectRedis(session);
         DataModule,
     ],
     controllers: [AppController],
-    providers: [AppService],
+    providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
 export class AppModule {
     constructor(
