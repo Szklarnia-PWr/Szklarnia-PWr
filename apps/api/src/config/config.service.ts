@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService as NestConfigService } from '@nestjs/config';
+import { ThrottlerModuleOptions } from '@nestjs/throttler';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { RedisOptions } from 'ioredis';
 
@@ -57,6 +58,13 @@ export class ConfigService {
                 this.get<string>('DATABASE_SSL') === 'true'
                     ? { requestCert: true, rejectUnauthorized: false }
                     : undefined,
+        };
+    }
+
+    throttlerOptions(): ThrottlerModuleOptions {
+        return {
+            ttl: this.get<number>('THROTTLER_TTL'),
+            limit: this.get<number>('THROTTLER_LIMIT'),
         };
     }
 }

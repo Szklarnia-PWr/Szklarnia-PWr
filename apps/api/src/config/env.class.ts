@@ -4,6 +4,8 @@ import {
     IsEnum,
     IsNumber,
     IsString,
+    Max,
+    Min,
     MinLength,
 } from 'class-validator';
 
@@ -33,6 +35,17 @@ export class Env {
 
     @IsString()
     CLIENT_CORS_WILDCARD_URL: string;
+
+    // THROTTLER
+
+    @IsNumber()
+    @Min(1)
+    @Max(900)
+    THROTTLER_TTL: number;
+
+    @IsNumber()
+    @Min(1)
+    THROTTLER_LIMIT: number;
 
     // SESSION
 
