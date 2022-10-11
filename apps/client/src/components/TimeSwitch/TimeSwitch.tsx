@@ -1,20 +1,32 @@
 import { Container, Tab, Tabs } from '@mui/material';
 import React from 'react';
 
-export const TimeSwitch = () => {
-    const timeRanges = ['day', 'week', 'month', 'year'];
-    const [timeRange, setTimeRange] = React.useState(0);
+type rangesType = 'day' | 'week' | 'month' | 'year';
+
+interface SwitchProps {
+    timeRange: rangesType;
+    setRange: (a: rangesType) => void;
+}
+
+const timeRanges: rangesType[] = ['day', 'week', 'month', 'year'];
+const rangeToIndex = { day: 0, week: 1, month: 2, year: 3 };
+
+export const TimeSwitch = ({ timeRange, setRange }: SwitchProps) => {
     const handleTimeChange = (
         event: React.SyntheticEvent,
         newValue: number,
     ) => {
-        setTimeRange(newValue);
+        setRange(timeRanges[newValue]);
     };
 
     return (
         <Container maxWidth='xl'>
-            <Tabs value={timeRange} onChange={handleTimeChange} centered>
-                {timeRanges.map((tm) => (
+            <Tabs
+                value={rangeToIndex[timeRange]}
+                onChange={handleTimeChange}
+                centered
+            >
+                {timeRanges.map((tm: rangesType) => (
                     <Tab label={tm} />
                 ))}
             </Tabs>

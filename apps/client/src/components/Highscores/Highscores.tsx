@@ -10,7 +10,13 @@ import {
 } from '@mui/material';
 import * as React from 'react';
 
-export const Highscores = () => {
+type rangesType = 'day' | 'week' | 'month' | 'year';
+
+interface HighscoresProps {
+    timeRange: rangesType;
+}
+
+export const Highscores = ({ timeRange }: HighscoresProps) => {
     const highs = [
         {
             parameter: 'Temperature [°C]',
@@ -41,7 +47,6 @@ export const Highscores = () => {
             minEver: 86,
         },
     ];
-    const timeRange = 'week';
     return (
         <Container
             sx={{
