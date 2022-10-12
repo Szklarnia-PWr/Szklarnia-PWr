@@ -59,29 +59,31 @@ export const Highscores = ({ timeRange }: HighscoresProps) => {
                 <Table sx={{ minWidth: 650 }} aria-label='simple table'>
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{ fontWeight: 'bold' }}>
+                            <TableCell
+                                sx={{ minWidth: '140px', fontWeight: 'bold' }}
+                            >
                                 Parameter
                             </TableCell>
                             <TableCell
-                                sx={{ fontWeight: 'bold' }}
+                                sx={{ minWidth: '140px', fontWeight: 'bold' }}
                                 align='right'
                             >
                                 Maximal this {timeRange}
                             </TableCell>
                             <TableCell
-                                sx={{ fontWeight: 'bold' }}
+                                sx={{ minWidth: '140px', fontWeight: 'bold' }}
                                 align='right'
                             >
                                 Minimal this {timeRange}
                             </TableCell>
                             <TableCell
-                                sx={{ fontWeight: 'bold' }}
+                                sx={{ minWidth: '140px', fontWeight: 'bold' }}
                                 align='right'
                             >
                                 Maximal (ever)
                             </TableCell>
                             <TableCell
-                                sx={{ fontWeight: 'bold' }}
+                                sx={{ minWidth: '140px', fontWeight: 'bold' }}
                                 align='right'
                             >
                                 Minimal (ever)
