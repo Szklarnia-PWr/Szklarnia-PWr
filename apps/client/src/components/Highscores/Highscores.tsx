@@ -12,41 +12,19 @@ import * as React from 'react';
 
 type rangesType = 'day' | 'week' | 'month' | 'year';
 
+interface HighsType {
+    parameter: string;
+    maxTime: number;
+    maxEver: number;
+    minTime: number;
+    minEver: number;
+}
 interface HighscoresProps {
     timeRange: rangesType;
+    highs: Array<HighsType>;
 }
 
-export const Highscores = ({ timeRange }: HighscoresProps) => {
-    const highs = [
-        {
-            parameter: 'Temperature [°C]',
-            maxTime: 43,
-            maxEver: 45,
-            minTime: 15,
-            minEver: 9,
-        },
-        {
-            parameter: 'Humidity [%]',
-            maxTime: 56,
-            maxEver: 81,
-            minTime: 43,
-            minEver: 43,
-        },
-        {
-            parameter: 'Pressure [hPa]',
-            maxTime: 1002,
-            maxEver: 1201,
-            minTime: 999,
-            minEver: 994,
-        },
-        {
-            parameter: 'Battery [%]',
-            maxTime: 93,
-            maxEver: 100,
-            minTime: 86,
-            minEver: 86,
-        },
-    ];
+export const Highscores = (props: HighscoresProps) => {
     return (
         <Container
             sx={{
@@ -68,13 +46,13 @@ export const Highscores = ({ timeRange }: HighscoresProps) => {
                                 sx={{ minWidth: '140px', fontWeight: 'bold' }}
                                 align='right'
                             >
-                                Maximal this {timeRange}
+                                Maximal this {props.timeRange}
                             </TableCell>
                             <TableCell
                                 sx={{ minWidth: '140px', fontWeight: 'bold' }}
                                 align='right'
                             >
-                                Minimal this {timeRange}
+                                Minimal this {props.timeRange}
                             </TableCell>
                             <TableCell
                                 sx={{ minWidth: '140px', fontWeight: 'bold' }}
@@ -91,7 +69,7 @@ export const Highscores = ({ timeRange }: HighscoresProps) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {highs.map((row) => (
+                        {props.highs.map((row) => (
                             <TableRow
                                 key={row.parameter}
                                 sx={{
