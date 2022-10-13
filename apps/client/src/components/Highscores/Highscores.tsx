@@ -10,15 +10,6 @@ import {
 } from '@mui/material';
 import * as React from 'react';
 
-type rangesType = 'day' | 'week' | 'month' | 'year';
-
-interface HighsType {
-    parameter: string;
-    maxTime: number;
-    maxEver: number;
-    minTime: number;
-    minEver: number;
-}
 interface HighscoresProps {
     timeRange: rangesType;
     highs: Array<HighsType>;

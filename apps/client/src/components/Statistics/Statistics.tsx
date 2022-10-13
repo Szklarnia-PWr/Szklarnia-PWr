@@ -3,9 +3,7 @@ import { useState } from 'react';
 
 import { Charts, Highscores, TimeSwitch } from '../../components';
 
-type rangesType = 'day' | 'week' | 'month' | 'year';
-
-const data = [
+const data: Array<DataType> = [
     {
         time: 'Mon',
         Temperature: -1,
@@ -57,7 +55,7 @@ const data = [
     },
 ];
 
-const highs = [
+const highs: Array<HighsType> = [
     {
         parameter: 'Temperature [°C]',
         maxTime: -1,
