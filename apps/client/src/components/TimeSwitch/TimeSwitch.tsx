@@ -1,8 +1,6 @@
 import { Container, Tab, Tabs } from '@mui/material';
 import React from 'react';
 
-type rangesType = 'day' | 'week' | 'month' | 'year';
-
 interface SwitchProps {
     timeRange: rangesType;
     setRange: (a: rangesType) => void;
