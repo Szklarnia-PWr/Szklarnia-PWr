@@ -17,92 +17,14 @@ import {
     YAxis,
 } from 'recharts';
 
-const data = [
-    {
-        time: 'Mon',
-        Temperature: 4000,
-        Humidity: 2400,
-        Pressure: 2400,
-        Battery: 100,
-    },
-    {
-        time: 'Tue',
-        Temperature: 3000,
-        Humidity: 1398,
-        Pressure: 2210,
-        Battery: 95,
-    },
-    {
-        time: 'Wed',
-        Temperature: 2000,
-        Humidity: 9800,
-        Pressure: 2290,
-        Battery: 90,
-    },
-    {
-        time: 'Thu',
-        Temperature: 2780,
-        Humidity: 3908,
-        Pressure: 2000,
-        Battery: 82,
-    },
-    {
-        time: 'Fri',
-        Temperature: 1890,
-        Humidity: 4800,
-        Pressure: 2181,
-        Battery: 80,
-    },
-    {
-        time: 'Sat',
-        Temperature: 2390,
-        Humidity: 3800,
-        Pressure: 2500,
-        Battery: 78,
-    },
-    {
-        time: 'Sun',
-        Temperature: 3490,
-        Humidity: 4300,
-        Pressure: 2100,
-        Battery: 70,
-    },
-];
+interface ChartsProps {
+    timeRange: rangesType;
+    data: Array<DataType>;
+    highs: Array<HighsType>;
+}
 
-const highs = [
-    {
-        parameter: 'Temperature [°C]',
-        maxTime: 43,
-        maxEver: 45,
-        minTime: 15,
-        minEver: 9,
-    },
-    {
-        parameter: 'Humidity [%]',
-        maxTime: 56,
-        maxEver: 81,
-        minTime: 43,
-        minEver: 43,
-    },
-    {
-        parameter: 'Pressure [hPa]',
-        maxTime: 1002,
-        maxEver: 1201,
-        minTime: 999,
-        minEver: 994,
-    },
-    {
-        parameter: 'Battery [%]',
-        maxTime: 93,
-        maxEver: 100,
-        minTime: 86,
-        minEver: 86,
-    },
-];
-
-export const Charts = () => {
+export const Charts = (props: ChartsProps) => {
     const theme = useTheme();
-
     return (
         <Container maxWidth='xl'>
             <Box sx={{ marginBottom: '5rem' }}>
@@ -110,7 +32,7 @@ export const Charts = () => {
 
                 <ResponsiveContainer width='100%' height={325}>
                     <AreaChart
-                        data={data}
+                        data={props.data}
                         margin={{
                             top: 10,
                             right: 30,
@@ -162,21 +84,25 @@ export const Charts = () => {
                     <Grid container spacing={0.2}>
                         <Grid item xs={2} />
                         <Grid item xs={4}>
-                            <Typography>Max: {highs[0].maxTime}</Typography>
+                            <Typography>
+                                Max: {props.highs[0].maxTime}
+                            </Typography>
                         </Grid>
                         <Grid item xs={4}>
                             <Typography>
-                                Max ever: {highs[0].maxEver}
+                                Max ever: {props.highs[0].maxEver}
                             </Typography>
                         </Grid>
                         <Grid item xs={2} />
                         <Grid item xs={2} />
                         <Grid item xs={4}>
-                            <Typography>Min: {highs[0].minTime}</Typography>
+                            <Typography>
+                                Min: {props.highs[0].minTime}
+                            </Typography>
                         </Grid>
                         <Grid item xs={4}>
                             <Typography>
-                                Min ever: {highs[0].minEver}
+                                Min ever: {props.highs[0].minEver}
                             </Typography>
                         </Grid>
                         <Grid item xs={2} />
@@ -188,7 +114,7 @@ export const Charts = () => {
                 <h2>Humidity</h2>
                 <ResponsiveContainer width='100%' height={325}>
                     <AreaChart
-                        data={data}
+                        data={props.data}
                         margin={{
                             top: 10,
                             right: 30,
@@ -219,21 +145,25 @@ export const Charts = () => {
                     <Grid container spacing={0.2}>
                         <Grid item xs={2} />
                         <Grid item xs={4}>
-                            <Typography>Max: {highs[0].maxTime}</Typography>
+                            <Typography>
+                                Max: {props.highs[0].maxTime}
+                            </Typography>
                         </Grid>
                         <Grid item xs={4}>
                             <Typography>
-                                Max ever: {highs[0].maxEver}
+                                Max ever: {props.highs[0].maxEver}
                             </Typography>
                         </Grid>
                         <Grid item xs={2} />
                         <Grid item xs={2} />
                         <Grid item xs={4}>
-                            <Typography>Min: {highs[0].minTime}</Typography>
+                            <Typography>
+                                Min: {props.highs[0].minTime}
+                            </Typography>
                         </Grid>
                         <Grid item xs={4}>
                             <Typography>
-                                Min ever: {highs[0].minEver}
+                                Min ever: {props.highs[0].minEver}
                             </Typography>
                         </Grid>
                         <Grid item xs={2} />
@@ -245,7 +175,7 @@ export const Charts = () => {
                 <h2>Pressure</h2>
                 <ResponsiveContainer width='100%' height={325}>
                     <AreaChart
-                        data={data}
+                        data={props.data}
                         margin={{
                             top: 10,
                             right: 30,
@@ -276,21 +206,25 @@ export const Charts = () => {
                     <Grid container spacing={0.2}>
                         <Grid item xs={2} />
                         <Grid item xs={4}>
-                            <Typography>Max: {highs[0].maxTime}</Typography>
+                            <Typography>
+                                Max: {props.highs[0].maxTime}
+                            </Typography>
                         </Grid>
                         <Grid item xs={4}>
                             <Typography>
-                                Max ever: {highs[0].maxEver}
+                                Max ever: {props.highs[0].maxEver}
                             </Typography>
                         </Grid>
                         <Grid item xs={2} />
                         <Grid item xs={2} />
                         <Grid item xs={4}>
-                            <Typography>Min: {highs[0].minTime}</Typography>
+                            <Typography>
+                                Min: {props.highs[0].minTime}
+                            </Typography>
                         </Grid>
                         <Grid item xs={4}>
                             <Typography>
-                                Min ever: {highs[0].minEver}
+                                Min ever: {props.highs[0].minEver}
                             </Typography>
                         </Grid>
                         <Grid item xs={2} />
@@ -302,7 +236,7 @@ export const Charts = () => {
                 <h2>Battery</h2>
                 <ResponsiveContainer width='100%' height={325}>
                     <AreaChart
-                        data={data}
+                        data={props.data}
                         margin={{
                             top: 10,
                             right: 30,
@@ -333,21 +267,25 @@ export const Charts = () => {
                     <Grid container spacing={0.2}>
                         <Grid item xs={2} />
                         <Grid item xs={4}>
-                            <Typography>Max: {highs[0].maxTime}</Typography>
+                            <Typography>
+                                Max: {props.highs[0].maxTime}
+                            </Typography>
                         </Grid>
                         <Grid item xs={4}>
                             <Typography>
-                                Max ever: {highs[0].maxEver}
+                                Max ever: {props.highs[0].maxEver}
                             </Typography>
                         </Grid>
                         <Grid item xs={2} />
                         <Grid item xs={2} />
                         <Grid item xs={4}>
-                            <Typography>Min: {highs[0].minTime}</Typography>
+                            <Typography>
+                                Min: {props.highs[0].minTime}
+                            </Typography>
                         </Grid>
                         <Grid item xs={4}>
                             <Typography>
-                                Min ever: {highs[0].minEver}
+                                Min ever: {props.highs[0].minEver}
                             </Typography>
                         </Grid>
                         <Grid item xs={2} />

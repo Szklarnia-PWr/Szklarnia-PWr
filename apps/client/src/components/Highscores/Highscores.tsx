@@ -10,38 +10,12 @@ import {
 } from '@mui/material';
 import * as React from 'react';
 
-export const Highscores = () => {
-    const highs = [
-        {
-            parameter: 'Temperature [°C]',
-            maxTime: 43,
-            maxEver: 45,
-            minTime: 15,
-            minEver: 9,
-        },
-        {
-            parameter: 'Humidity [%]',
-            maxTime: 56,
-            maxEver: 81,
-            minTime: 43,
-            minEver: 43,
-        },
-        {
-            parameter: 'Pressure [hPa]',
-            maxTime: 1002,
-            maxEver: 1201,
-            minTime: 999,
-            minEver: 994,
-        },
-        {
-            parameter: 'Battery [%]',
-            maxTime: 93,
-            maxEver: 100,
-            minTime: 86,
-            minEver: 86,
-        },
-    ];
-    const timeRange = 'week';
+interface HighscoresProps {
+    timeRange: rangesType;
+    highs: Array<HighsType>;
+}
+
+export const Highscores = (props: HighscoresProps) => {
     return (
         <Container
             sx={{
@@ -54,29 +28,31 @@ export const Highscores = () => {
                 <Table sx={{ minWidth: 650 }} aria-label='simple table'>
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{ fontWeight: 'bold' }}>
+                            <TableCell
+                                sx={{ minWidth: '140px', fontWeight: 'bold' }}
+                            >
                                 Parameter
                             </TableCell>
                             <TableCell
-                                sx={{ fontWeight: 'bold' }}
+                                sx={{ minWidth: '140px', fontWeight: 'bold' }}
                                 align='right'
                             >
-                                Maximal this {timeRange}
+                                Maximal this {props.timeRange}
                             </TableCell>
                             <TableCell
-                                sx={{ fontWeight: 'bold' }}
+                                sx={{ minWidth: '140px', fontWeight: 'bold' }}
                                 align='right'
                             >
-                                Minimal this {timeRange}
+                                Minimal this {props.timeRange}
                             </TableCell>
                             <TableCell
-                                sx={{ fontWeight: 'bold' }}
+                                sx={{ minWidth: '140px', fontWeight: 'bold' }}
                                 align='right'
                             >
                                 Maximal (ever)
                             </TableCell>
                             <TableCell
-                                sx={{ fontWeight: 'bold' }}
+                                sx={{ minWidth: '140px', fontWeight: 'bold' }}
                                 align='right'
                             >
                                 Minimal (ever)
@@ -84,7 +60,7 @@ export const Highscores = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {highs.map((row) => (
+                        {props.highs.map((row) => (
                             <TableRow
                                 key={row.parameter}
                                 sx={{
