@@ -116,7 +116,7 @@ export const Navbar = () => {
                                         color: theme.palette.primary.main,
                                     }}
                                     target='__blank'
-                                    href='https://liberapay.com/'
+                                    href='https://www.gentoo.org/donate/'
                                 >
                                     Donate
                                 </a>
