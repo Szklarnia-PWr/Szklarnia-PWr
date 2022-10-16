@@ -16,7 +16,7 @@ export const Thermometer = () => {
                 borderColor: 'primary.main',
                 borderRadius: '16px',
                 textAlign: 'center',
-                minWidth: '10rem',
+                minWidth: '12rem',
             }}
         >
             <Typography
