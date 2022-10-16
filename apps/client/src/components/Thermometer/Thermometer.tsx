@@ -29,10 +29,20 @@ export const Thermometer = () => {
             <Typography
                 variant='h4'
                 component='h4'
+                marginTop='-.6rem'
                 fontSize={{ xs: '1.5em', md: '2em' }}
             >
                 humidity: {humVal}%<br />
                 pressure: {pressVal}hPa
+            </Typography>
+            <Typography
+                variant='h5'
+                component='h5'
+                color='#666'
+                paddingTop='1rem'
+                fontSize={{ xs: '1em', md: '1.5em' }}
+            >
+                last update: 2min
             </Typography>
         </Box>
     );
