@@ -46,7 +46,7 @@ export const Footer = () => {
                             rel='noreferrer'
                             px='10px'
                         >
-                            Maciej Opaliński
+                            Maciej
                         </Link>
                         <Link
                             color='inherit'
@@ -54,7 +54,7 @@ export const Footer = () => {
                             href='https://github.com/JakubZojdzik'
                             rel='noreferrer'
                         >
-                            Jakub Żojdzik
+                            Jakub
                         </Link>
                     </Box>
                 </Toolbar>
