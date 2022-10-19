@@ -1,23 +1,14 @@
-import { Inject, MiddlewareConsumer, Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
-import * as ConnectRedis from 'connect-redis';
-import * as session from 'express-session';
-import Redis from 'ioredis';
 import * as passport from 'passport';
 
 import { AuthModule } from '../auth';
-import { ConfigModule, ConfigService, NodeEnv } from '../config';
-import { DataModule } from '../data';
+import { ConfigModule, ConfigService } from '../config';
 import { DatabaseModule } from '../database';
-import { DatasetModule } from '../dataset';
 import { DeviceModule } from '../device';
-import { REDIS, RedisModule } from '../redis';
-import { UserModule } from '../user';
-import { Time } from '../utils';
-import { AppController, AppService } from '.';
-
-const RedisStore = ConnectRedis(session);
+import { MetricsModule } from '../metrics';
+import { RedisModule } from '../redis';
 
 @Module({
     imports: [
@@ -29,39 +20,22 @@ const RedisStore = ConnectRedis(session);
             inject: [ConfigService],
             useFactory: (config: ConfigService) => config.throttlerOptions(),
         }),
-        UserModule,
         DeviceModule,
         AuthModule,
-        DatasetModule,
-        DataModule,
+        MetricsModule,
     ],
-    controllers: [AppController],
-    providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }],
+    controllers: [],
+    providers: [
+        {
+            provide: APP_GUARD,
+            useClass: ThrottlerGuard,
+        },
+    ],
 })
 export class AppModule {
-    constructor(
-        @Inject(REDIS) private redis_client: Redis,
-        private config: ConfigService,
-    ) {}
+    constructor() {}
 
     configure(consumer: MiddlewareConsumer) {
-        consumer
-            .apply(
-                session({
-                    secret: this.config.COOKIE_SECRET,
-                    resave: false,
-                    saveUninitialized: false,
-                    cookie: {
-                        maxAge: 1 * Time.HOUR,
-                        httpOnly: true,
-                        secure: this.config.NODE_ENV === NodeEnv.PRODUCTION,
-                        sameSite: false,
-                    },
-                    store: new RedisStore({ client: this.redis_client }),
-                }),
-                passport.initialize(),
-                passport.session(),
-            )
-            .forRoutes('*');
+        consumer.apply(passport.initialize()).forRoutes('*');
     }
 }

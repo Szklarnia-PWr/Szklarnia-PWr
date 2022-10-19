@@ -2,18 +2,11 @@ import { Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 
 import { DeviceModule } from '../device';
-import { UserModule } from '../user';
-import {
-    APIKeyStrategy,
-    AuthController,
-    AuthSerializer,
-    AuthService,
-    LocalStrategy,
-} from '.';
+import { APIKeyStrategy, AuthController, AuthService } from '.';
 
 @Module({
-    imports: [PassportModule, UserModule, DeviceModule],
-    providers: [AuthService, APIKeyStrategy, LocalStrategy, AuthSerializer],
+    imports: [PassportModule, DeviceModule],
+    providers: [AuthService, APIKeyStrategy],
     controllers: [AuthController],
 })
 export class AuthModule {}

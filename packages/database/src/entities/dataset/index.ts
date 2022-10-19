@@ -1,2 +1,1 @@
-export * from './dataset-entry.entity';
-export * from './dataset.entity';
+export * from './metric.entity';
