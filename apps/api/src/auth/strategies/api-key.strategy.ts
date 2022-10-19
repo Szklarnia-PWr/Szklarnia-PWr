@@ -17,6 +17,6 @@ export class APIKeyStrategy extends PassportStrategy(Strategy, 'api-key') {
             throw new UnauthorizedException();
         }
 
-        return this.authService.loginApiKey(apiKey);
+        return this.authService.login(apiKey);
     }
 }

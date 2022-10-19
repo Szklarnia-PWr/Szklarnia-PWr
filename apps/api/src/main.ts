@@ -32,7 +32,6 @@ async function bootstrap() {
     const config = new DocumentBuilder()
         .setTitle('API Docs')
         .addServer(env.BASE_PATH)
-        .addCookieAuth()
         .addApiKey({ type: 'apiKey', name: 'X-API-Key' }, 'X-API-Key')
         .build();
 

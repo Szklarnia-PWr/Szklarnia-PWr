@@ -10,28 +10,28 @@ import {
 } from 'typeorm';
 
 import { Device } from '../device';
-import { Dataset } from '.';
 
-@Entity('entries')
-export class DatasetEntry {
+@Entity('metrics')
+export class Metric {
     @PrimaryGeneratedColumn('increment')
     @Exclude()
     id: number;
 
+    @ApiProperty({ example: 'esp32_c13' })
     @ManyToOne(() => Device)
     @JoinColumn()
+    @Exclude()
     device: Device;
 
-    @ManyToOne(() => Dataset, { eager: true, onDelete: 'CASCADE' })
-    @JoinColumn()
+    @Column()
     @Exclude()
-    dataset: Dataset;
+    dataset: string;
+
+    @ApiProperty({ example: new Date() })
+    @CreateDateColumn({ type: 'timestamptz', primary: true })
+    timestamp: Date;
 
     @ApiProperty({ example: '36.6' })
     @Column('numeric')
     value: number;
-
-    @ApiProperty({ example: new Date() })
-    @CreateDateColumn({ type: 'timestamptz' })
-    timestamp: Date;
 }

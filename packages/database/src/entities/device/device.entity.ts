@@ -1,21 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
-import { createHash, randomBytes, randomUUID } from 'crypto';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { createHash, randomBytes } from 'crypto';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('devices')
 export class Device {
-    @ApiProperty({ example: randomUUID() })
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
-
     @ApiProperty({ example: 'esp32_c13' })
-    @Column({ unique: true })
-    name: string;
-
-    @ApiProperty({ example: 'ESP-32 Development Board' })
-    @Column('text', { default: '' })
-    description: string;
+    @PrimaryColumn()
+    id: string;
 
     @Column({ nullable: true, default: null, unique: true })
     @Exclude()
@@ -27,7 +19,7 @@ export class Device {
     }
 
     generateRandomApiKey() {
-        const apiKey = randomBytes(32).toString('base64url');
+        const apiKey = randomBytes(32).toString('base64');
         this.apiKeyHash = createHash('sha256').update(apiKey).digest('base64');
         return apiKey;
     }
