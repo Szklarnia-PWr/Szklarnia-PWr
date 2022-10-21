@@ -10,7 +10,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-// import { NavLink } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
 export const Navbar = () => {
@@ -83,33 +82,36 @@ export const Navbar = () => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            <MenuItem key='Home' onClick={handleCloseNavMenu}>
-                                <NavLink
-                                    style={{
-                                        color: theme.palette.primary.main,
-                                    }}
-                                    to={{
-                                        pathname: '/',
-                                    }}
+                            <NavLink
+                                style={{
+                                    color: theme.palette.primary.main,
+                                }}
+                                to={{
+                                    pathname: '/',
+                                }}
+                            >
+                                <MenuItem
+                                    key='Home'
+                                    onClick={handleCloseNavMenu}
                                 >
                                     Home
-                                </NavLink>
-                            </MenuItem>
-                            <MenuItem
-                                key='Statistics'
-                                onClick={handleCloseNavMenu}
+                                </MenuItem>
+                            </NavLink>
+                            <NavLink
+                                style={{
+                                    color: theme.palette.primary.main,
+                                }}
+                                to={{
+                                    pathname: '/statistics',
+                                }}
                             >
-                                <NavLink
-                                    style={{
-                                        color: theme.palette.primary.main,
-                                    }}
-                                    to={{
-                                        pathname: '/statistics',
-                                    }}
+                                <MenuItem
+                                    key='Statistics'
+                                    onClick={handleCloseNavMenu}
                                 >
                                     Statistics
-                                </NavLink>
-                            </MenuItem>
+                                </MenuItem>
+                            </NavLink>
                             <MenuItem key='Donate' onClick={handleCloseNavMenu}>
                                 <a
                                     style={{
@@ -149,47 +151,47 @@ export const Navbar = () => {
                         }}
                         justifyContent='flex-end'
                     >
-                        <Button
-                            key='Home'
-                            onClick={handleCloseNavMenu}
-                            sx={{ my: 2, display: 'block' }}
+                        <NavLink
+                            style={{ color: 'white' }}
+                            to={{
+                                pathname: '/',
+                            }}
                         >
-                            <NavLink
-                                style={{ color: 'white' }}
-                                to={{
-                                    pathname: '/',
-                                }}
+                            <Button
+                                key='Home'
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, display: 'block', color: 'white' }}
                             >
                                 Home
-                            </NavLink>
-                        </Button>
-                        <Button
-                            key={'Statistics'}
-                            onClick={handleCloseNavMenu}
-                            sx={{ my: 2, display: 'block' }}
+                            </Button>
+                        </NavLink>
+                        <NavLink
+                            style={{ color: 'white' }}
+                            to={{
+                                pathname: '/statistics',
+                            }}
                         >
-                            <NavLink
-                                style={{ color: 'white' }}
-                                to={{
-                                    pathname: '/statistics',
-                                }}
+                            <Button
+                                key={'Statistics'}
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, display: 'block', color: 'white' }}
                             >
                                 Statistics
-                            </NavLink>
-                        </Button>
-                        <Button
-                            key={'Donate'}
-                            onClick={handleCloseNavMenu}
-                            sx={{ my: 2, display: 'block' }}
+                            </Button>
+                        </NavLink>
+                        <a
+                            style={{ color: 'white' }}
+                            target='__blank'
+                            href='https://www.gentoo.org/donate/'
                         >
-                            <a
-                                style={{ color: 'white' }}
-                                target='__blank'
-                                href='https://liberapay.com/'
+                            <Button
+                                key={'Donate'}
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, display: 'block', color: 'white' }}
                             >
                                 Donate
-                            </a>
-                        </Button>
+                            </Button>
+                        </a>
                     </Box>
                 </Toolbar>
             </Container>
