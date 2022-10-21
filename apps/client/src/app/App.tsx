@@ -1,4 +1,5 @@
 import { Box } from '@mui/material';
+import { Container } from '@mui/system';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { Footer, Navbar, Thermometer } from '../components';
@@ -9,7 +10,10 @@ export const App = () => {
         /^(?:.*;)?\s*nothink-interesting\s*=\s*([^;]+)(?:.*)?$/,
     ) || [, null])[1];
     return cookieVal !== 'V1cwMWMyRldhM2xqUjNocFltdFpNbHBITVVaUVVUMDk=' ? (
-        <h1>TRWAJĄ PRACE!</h1>
+        <Container sx={{ textAlign: 'center' }}>
+            <h1>TRWAJĄ PRACE!</h1>
+            <h2>Oficjalne otwarcie: (jeszcze nwm xd)</h2>
+        </Container>
     ) : (
         <Box
             sx={{
