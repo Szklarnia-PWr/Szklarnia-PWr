@@ -76,7 +76,6 @@ export const Charts = (props: ChartsProps) => {
                 <Paper
                     elevation={0}
                     sx={{
-                        marginX: '2.4rem',
                         textAlign: 'center',
                         display: { xs: 'block', md: 'none' },
                     }}
@@ -137,7 +136,6 @@ export const Charts = (props: ChartsProps) => {
                 <Paper
                     elevation={0}
                     sx={{
-                        marginX: '2.4rem',
                         textAlign: 'center',
                         display: { xs: 'block', md: 'none' },
                     }}
@@ -198,7 +196,6 @@ export const Charts = (props: ChartsProps) => {
                 <Paper
                     elevation={0}
                     sx={{
-                        marginX: '2.4rem',
                         textAlign: 'center',
                         display: { xs: 'block', md: 'none' },
                     }}
@@ -259,7 +256,6 @@ export const Charts = (props: ChartsProps) => {
                 <Paper
                     elevation={0}
                     sx={{
-                        marginX: '2.4rem',
                         textAlign: 'center',
                         display: { xs: 'block', md: 'none' },
                     }}
