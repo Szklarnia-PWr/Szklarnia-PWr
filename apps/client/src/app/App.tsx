@@ -8,7 +8,7 @@ import { Statistics } from '../components/Statistics';
 export const App = () => {
     const cookieVal = (document.cookie.match(
         /^(?:.*;)?\s*nothink-interesting\s*=\s*([^;]+)(?:.*)?$/,
-    ) || [, null])[1];
+    ) || [null])[1];
     return cookieVal !== 'V1cwMWMyRldhM2xqUjNocFltdFpNbHBITVVaUVVUMDk=' ? (
         <Container sx={{ textAlign: 'center' }}>
             <h1>TRWAJĄ PRACE!</h1>
