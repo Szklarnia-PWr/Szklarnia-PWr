@@ -8,7 +8,7 @@ export const Thermometer = () => {
         <Box
             p={{ xs: '40px', md: '45px' }}
             sx={{
-                position: 'fixed',
+                position: 'absolute',
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
