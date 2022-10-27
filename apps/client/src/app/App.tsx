@@ -22,20 +22,14 @@ export const App = () => {
                 position: 'relative',
                 minHeight: '100vh',
                 flexDirection: 'column',
-                justifyContent: 'space-between',
             }}
         >
             <Router>
                 <Navbar />
-                <Box sx={{ paddingBottom: '56px' }}>
-                    <Routes>
-                        <Route path='/' element={<Thermometer />}></Route>
-                        <Route
-                            path='/statistics'
-                            element={<Statistics />}
-                        ></Route>
-                    </Routes>
-                </Box>
+                <Routes>
+                    <Route path='/' element={<Thermometer />}></Route>
+                    <Route path='/statistics' element={<Statistics />}></Route>
+                </Routes>
                 <Footer />
             </Router>
         </Box>
