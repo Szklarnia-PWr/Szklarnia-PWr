@@ -17,21 +17,22 @@ export const App = () => {
             <h2>Oficjalne otwarcie: (jeszcze nwm xd)</h2>
         </Container>
     ) : (
-        <Box
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: '100vh',
-            }}
-        >
-            <Router>
+        <Router>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    minHeight: '100vh',
+                }}
+            >
                 <Navbar />
                 <Routes>
                     <Route path='/' element={<Thermometer />}></Route>
                     <Route path='/statistics' element={<Statistics />}></Route>
                 </Routes>
                 <Footer />
-            </Router>
-        </Box>
+            </Box>
+        </Router>
     );
 };

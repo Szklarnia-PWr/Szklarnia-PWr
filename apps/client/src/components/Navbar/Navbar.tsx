@@ -28,16 +28,7 @@ export const Navbar = () => {
     };
 
     return (
-        // <AppBar position='static' sx={{ position: 'static', display: 'block' }}>
-        <Box
-            position='static'
-            sx={{
-                position: 'static',
-                display: 'block',
-                backgroundColor: theme.palette.primary.main,
-                color: 'white',
-            }}
-        >
+        <AppBar position='static' sx={{ position: 'static', display: 'block' }}>
             <Container maxWidth='xl'>
                 <Toolbar disableGutters>
                     <Typography
@@ -204,6 +195,6 @@ export const Navbar = () => {
                     </Box>
                 </Toolbar>
             </Container>
-        </Box>
+        </AppBar>
     );
 };
