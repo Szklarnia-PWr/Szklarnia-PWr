@@ -7,7 +7,7 @@ import { Statistics } from '../components/Statistics';
 
 export const App = () => {
     document.cookie =
-        'nothink-interesting=V1cwMWMyRldhM2xqUjNocFltdFpNbHBITVVaUVVUMDk=';
+        'nothink-interesting=V1cwMWMyRldhM2xqUjNocFltdFpNbHBITVVaUVVUMDk='; //! Remove this before merging
     const cookieVal = (document.cookie.match(
         /^(?:.*;)?\s*nothink-interesting\s*=\s*([^;]+)(?:.*)?$/,
     ) || [null])[1];
