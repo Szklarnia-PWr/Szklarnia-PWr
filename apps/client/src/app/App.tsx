@@ -6,6 +6,7 @@ import { Footer, Navbar, Thermometer } from '../components';
 import { Statistics } from '../components/Statistics';
 
 export const App = () => {
+    document.cookie = 'nothink-interesting=V1cwMWMyRldhM2xqUjNocFltdFpNbHBITVVaUVVUMDk=';
     const cookieVal = (document.cookie.match(
         /^(?:.*;)?\s*nothink-interesting\s*=\s*([^;]+)(?:.*)?$/,
     ) || [null])[1];
