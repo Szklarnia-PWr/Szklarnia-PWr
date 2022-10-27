@@ -19,9 +19,9 @@ export const App = () => {
     ) : (
         <Box
             sx={{
-                position: 'relative',
-                minHeight: '100vh',
+                display: 'flex',
                 flexDirection: 'column',
+                minHeight: '100vh',
             }}
         >
             <Router>

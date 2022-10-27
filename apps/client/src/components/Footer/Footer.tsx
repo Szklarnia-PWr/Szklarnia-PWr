@@ -13,8 +13,7 @@ export const Footer = () => {
         <Container
             maxWidth='xl'
             sx={{
-                position: 'absolute',
-                bottom: '0',
+                marginTop: 'auto',
                 backgroundColor: theme.palette.primary.main,
             }}
         >
