@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import { Container } from '@mui/system';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -15,22 +14,13 @@ export const App = () => {
             <h2>Oficjalne otwarcie: (jeszcze nwm xd)</h2>
         </Container>
     ) : (
-        <Box
-            sx={{
-                display: 'flex',
-                minHeight: '100vh',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-            }}
-        >
-            <Router>
-                <Navbar />
-                <Routes>
-                    <Route path='/' element={<Thermometer />}></Route>
-                    <Route path='/statistics' element={<Statistics />}></Route>
-                </Routes>
-                <Footer />
-            </Router>
-        </Box>
+        <Router>
+            <Navbar />
+            <Routes>
+                <Route path='/' element={<Thermometer />}></Route>
+                <Route path='/statistics' element={<Statistics />}></Route>
+            </Routes>
+            <Footer />
+        </Router>
     );
 };

@@ -6,13 +6,30 @@ import {
     Typography,
     useTheme,
 } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
 export const Footer = () => {
     const theme = useTheme();
+    const location = useLocation();
+    console.log(location.pathname);
     return (
-        <Box sx={{ backgroundColor: theme.palette.primary.main }}>
+        <Box
+            style={
+                location.pathname === '/'
+                    ? {
+                          position: 'absolute',
+                          bottom: '0',
+                          left: '0',
+                          right: '0',
+                      }
+                    : {}
+            }
+            sx={{
+                backgroundColor: theme.palette.primary.main,
+            }}
+        >
             <Container maxWidth='xl'>
-                <Toolbar disableGutters>
+                <Toolbar disableGutters sx={{ width: '100%' }}>
                     <Typography
                         noWrap
                         component='a'

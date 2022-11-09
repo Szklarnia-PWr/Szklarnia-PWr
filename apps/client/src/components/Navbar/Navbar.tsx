@@ -28,7 +28,7 @@ export const Navbar = () => {
     };
 
     return (
-        <AppBar position='static'>
+        <AppBar position='static' sx={{ position: 'static', display: 'block' }}>
             <Container maxWidth='xl'>
                 <Toolbar disableGutters>
                     <Typography
@@ -56,7 +56,7 @@ export const Navbar = () => {
                     >
                         <IconButton
                             size='large'
-                            aria-label='account of current user'
+                            aria-label='menu'
                             aria-controls='menu-appbar'
                             aria-haspopup='true'
                             onClick={handleOpenNavMenu}

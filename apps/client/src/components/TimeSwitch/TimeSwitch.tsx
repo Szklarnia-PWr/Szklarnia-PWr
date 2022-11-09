@@ -25,7 +25,13 @@ export const TimeSwitch = ({ timeRange, setRange }: SwitchProps) => {
                 centered
             >
                 {timeRanges.map((tm: rangesType) => (
-                    <Tab label={tm} />
+                    <Tab
+                        sx={{
+                            borderBottom: 1,
+                            borderColor: 'divider',
+                        }}
+                        label={tm}
+                    />
                 ))}
             </Tabs>
         </Container>
