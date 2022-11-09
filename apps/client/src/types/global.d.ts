@@ -12,10 +12,7 @@ declare global {
     }
 
     interface DataType {
-        time: string;
-        Temperature: number;
-        Humidity: number;
-        Pressure: number;
-        Battery: number;
+        t: string;
+        v: number;
     }
 }

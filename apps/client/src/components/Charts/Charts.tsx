@@ -19,7 +19,10 @@ import {
 
 interface ChartsProps {
     timeRange: rangesType;
-    data: Array<DataType>;
+    temperatureData: Array<DataType>;
+    humidityData: Array<DataType>;
+    pressureData: Array<DataType>;
+    batteryData: Array<DataType>;
     highs: Array<HighsType>;
 }
 
@@ -32,7 +35,7 @@ export const Charts = (props: ChartsProps) => {
 
                 <ResponsiveContainer width='100%' height={325}>
                     <AreaChart
-                        data={props.data}
+                        data={props.temperatureData}
                         margin={{
                             top: 10,
                             right: 30,
@@ -114,7 +117,7 @@ export const Charts = (props: ChartsProps) => {
                 <h2>Humidity</h2>
                 <ResponsiveContainer width='100%' height={325}>
                     <AreaChart
-                        data={props.data}
+                        data={props.humidityData}
                         margin={{
                             top: 10,
                             right: 30,
@@ -175,7 +178,7 @@ export const Charts = (props: ChartsProps) => {
                 <h2>Pressure</h2>
                 <ResponsiveContainer width='100%' height={325}>
                     <AreaChart
-                        data={props.data}
+                        data={props.pressureData}
                         margin={{
                             top: 10,
                             right: 30,
@@ -236,7 +239,7 @@ export const Charts = (props: ChartsProps) => {
                 <h2>Battery</h2>
                 <ResponsiveContainer width='100%' height={325}>
                     <AreaChart
-                        data={props.data}
+                        data={props.batteryData}
                         margin={{
                             top: 10,
                             right: 30,
