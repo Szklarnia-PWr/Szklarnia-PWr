@@ -6,13 +6,21 @@ import {
     Typography,
     useTheme,
 } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
 export const Footer = () => {
     const theme = useTheme();
+    const location = useLocation();
+    console.log(location.pathname);
     return (
-        <Container
-            maxWidth='xl'
+        <Box
+            style={
+                location.pathname === '/'
+                    ? { position: 'sticky', bottom: '0', maxWidth: '100%' }
+                    : {}
+            }
             sx={{
+                paddingX: '10rem',
                 marginTop: 'auto',
                 backgroundColor: theme.palette.primary.main,
             }}
@@ -63,6 +71,6 @@ export const Footer = () => {
                     </Link>
                 </Box>
             </Toolbar>
-        </Container>
+        </Box>
     );
 };
