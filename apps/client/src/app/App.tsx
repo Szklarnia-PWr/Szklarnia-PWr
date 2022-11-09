@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import { Container } from '@mui/system';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -6,8 +5,6 @@ import { Footer, Navbar, Thermometer } from '../components';
 import { Statistics } from '../components/Statistics';
 
 export const App = () => {
-    document.cookie =
-        'nothink-interesting=V1cwMWMyRldhM2xqUjNocFltdFpNbHBITVVaUVVUMDk='; //! Remove this before merging
     const cookieVal = (document.cookie.match(
         /^(?:.*;)?\s*nothink-interesting\s*=\s*([^;]+)(?:.*)?$/,
     ) || [null])[1];
@@ -18,14 +15,12 @@ export const App = () => {
         </Container>
     ) : (
         <Router>
-            <Box>
-                <Navbar />
-                <Routes>
-                    <Route path='/' element={<Thermometer />}></Route>
-                    <Route path='/statistics' element={<Statistics />}></Route>
-                </Routes>
-                <Footer />
-            </Box>
+            <Navbar />
+            <Routes>
+                <Route path='/' element={<Thermometer />}></Route>
+                <Route path='/statistics' element={<Statistics />}></Route>
+            </Routes>
+            <Footer />
         </Router>
     );
 };
