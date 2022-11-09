@@ -18,14 +18,7 @@ export const App = () => {
         </Container>
     ) : (
         <Router>
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    minHeight: '100vh',
-                }}
-            >
+            <Box>
                 <Navbar />
                 <Routes>
                     <Route path='/' element={<Thermometer />}></Route>

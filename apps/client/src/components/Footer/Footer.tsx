@@ -16,61 +16,66 @@ export const Footer = () => {
         <Box
             style={
                 location.pathname === '/'
-                    ? { position: 'sticky', bottom: '0', maxWidth: '100%' }
+                    ? {
+                          position: 'absolute',
+                          bottom: '0',
+                          left: '0',
+                          right: '0',
+                      }
                     : {}
             }
             sx={{
-                paddingX: '10rem',
-                marginTop: 'auto',
                 backgroundColor: theme.palette.primary.main,
             }}
         >
-            <Toolbar disableGutters>
-                <Typography
-                    noWrap
-                    component='a'
-                    href=''
-                    sx={{
-                        mr: 2,
-                        display: 'flex',
-                        flexGrow: 1,
-                        fontFamily: 'monospace',
-                        fontWeight: 700,
-                        color: 'white',
-                        textDecoration: 'none',
-                    }}
-                >
-                    Szklarnia PWr
-                </Typography>
-                <Box
-                    sx={{
-                        flexGrow: 1,
-                        display: 'flex',
-                        my: 2,
-                        color: 'white',
-                    }}
-                    justifyContent='flex-end'
-                >
-                    Authors:
-                    <Link
-                        color='inherit'
-                        target='_blank'
-                        href='https://github.com/PoProstuMieciek'
-                        rel='noreferrer'
-                        px='10px'
+            <Container maxWidth='xl'>
+                <Toolbar disableGutters sx={{ width: '100%' }}>
+                    <Typography
+                        noWrap
+                        component='a'
+                        href=''
+                        sx={{
+                            mr: 2,
+                            display: 'flex',
+                            flexGrow: 1,
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            color: 'white',
+                            textDecoration: 'none',
+                        }}
                     >
-                        Maciej
-                    </Link>
-                    <Link
-                        color='inherit'
-                        target='_blank'
-                        href='https://github.com/JakubZojdzik'
-                        rel='noreferrer'
+                        Szklarnia PWr
+                    </Typography>
+                    <Box
+                        sx={{
+                            flexGrow: 1,
+                            display: 'flex',
+                            my: 2,
+                            color: 'white',
+                        }}
+                        justifyContent='flex-end'
                     >
-                        Jakub
-                    </Link>
-                </Box>
-            </Toolbar>
+                        Authors:
+                        <Link
+                            color='inherit'
+                            target='_blank'
+                            href='https://github.com/PoProstuMieciek'
+                            rel='noreferrer'
+                            px='10px'
+                        >
+                            Maciej
+                        </Link>
+                        <Link
+                            color='inherit'
+                            target='_blank'
+                            href='https://github.com/JakubZojdzik'
+                            rel='noreferrer'
+                        >
+                            Jakub
+                        </Link>
+                    </Box>
+                </Toolbar>
+            </Container>
         </Box>
     );
 };
