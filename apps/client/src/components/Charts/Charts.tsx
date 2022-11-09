@@ -64,12 +64,12 @@ export const Charts = (props: ChartsProps) => {
                             </linearGradient>
                         </defs>
                         <CartesianGrid strokeDasharray='3 3' />
-                        <XAxis dataKey='time' />
+                        <XAxis dataKey='t' />
                         <YAxis />
                         <Tooltip />
                         <Area
                             type='monotone'
-                            dataKey='Temperature'
+                            dataKey='v'
                             fill='url(#chartGradient)'
                             stroke={theme.palette.primary.main}
                             fillOpacity={1}
@@ -126,12 +126,12 @@ export const Charts = (props: ChartsProps) => {
                         }}
                     >
                         <CartesianGrid strokeDasharray='3 3' />
-                        <XAxis dataKey='time' />
+                        <XAxis dataKey='t' />
                         <YAxis />
                         <Tooltip />
                         <Area
                             type='monotone'
-                            dataKey='Humidity'
+                            dataKey='v'
                             stroke={theme.palette.primary.main}
                             fill='url(#chartGradient)'
                         />
@@ -187,12 +187,12 @@ export const Charts = (props: ChartsProps) => {
                         }}
                     >
                         <CartesianGrid strokeDasharray='3 3' />
-                        <XAxis dataKey='time' />
+                        <XAxis dataKey='t' />
                         <YAxis />
                         <Tooltip />
                         <Area
                             type='monotone'
-                            dataKey='Pressure'
+                            dataKey='v'
                             stroke={theme.palette.primary.main}
                             fill='url(#chartGradient)'
                         />
@@ -248,12 +248,12 @@ export const Charts = (props: ChartsProps) => {
                         }}
                     >
                         <CartesianGrid strokeDasharray='3 3' />
-                        <XAxis dataKey='time' />
+                        <XAxis dataKey='t' />
                         <YAxis />
                         <Tooltip />
                         <Area
                             type='monotone'
-                            dataKey='Battery'
+                            dataKey='v'
                             stroke={theme.palette.primary.main}
                             fill='url(#chartGradient)'
                         />
