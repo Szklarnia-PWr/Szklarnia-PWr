@@ -64,15 +64,14 @@ export const Charts = (props: ChartsProps) => {
                             </linearGradient>
                         </defs>
                         <CartesianGrid strokeDasharray='3 3' />
-                        <XAxis dataKey='t' />
+                        <XAxis scale='time' dataKey='t' />
                         <YAxis />
                         <Tooltip />
                         <Area
                             type='monotone'
                             dataKey='v'
-                            fill='url(#chartGradient)'
                             stroke={theme.palette.primary.main}
-                            fillOpacity={1}
+                            fill='url(#chartGradient)'
                         />
                     </AreaChart>
                 </ResponsiveContainer>
@@ -126,7 +125,7 @@ export const Charts = (props: ChartsProps) => {
                         }}
                     >
                         <CartesianGrid strokeDasharray='3 3' />
-                        <XAxis dataKey='t' />
+                        <XAxis scale='time' dataKey='t' />
                         <YAxis />
                         <Tooltip />
                         <Area
@@ -187,7 +186,7 @@ export const Charts = (props: ChartsProps) => {
                         }}
                     >
                         <CartesianGrid strokeDasharray='3 3' />
-                        <XAxis dataKey='t' />
+                        <XAxis scale='time' dataKey='t' />
                         <YAxis />
                         <Tooltip />
                         <Area
@@ -248,7 +247,7 @@ export const Charts = (props: ChartsProps) => {
                         }}
                     >
                         <CartesianGrid strokeDasharray='3 3' />
-                        <XAxis dataKey='t' />
+                        <XAxis scale='time' dataKey='t' />
                         <YAxis />
                         <Tooltip />
                         <Area
