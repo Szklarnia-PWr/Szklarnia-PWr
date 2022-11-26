@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-interface useTemperatureProps {
+interface useBatteryProps {
     // sinceDate: String;
     device: String;
     timeRange: rangesType;
 }
 
-export const useTemperature = (props: useTemperatureProps) => {
-    const [tempResult, setTempResult] = useState<Array<DataType>>([
+export const useBattery = (props: useBatteryProps) => {
+    const [battResult, setBattResult] = useState<Array<DataType>>([
         { t: '0', v: 0 },
     ]);
     let startDate = new Date();
@@ -21,18 +21,18 @@ export const useTemperature = (props: useTemperatureProps) => {
     } else if (props.timeRange === 'year') {
         startDate.setMonth(startDate.getMonth() - 12);
     }
-    console.log('[useTemperature]: ', startDate.toISOString());
+    console.log('[useBattery]: ', startDate.toISOString());
     let sinceDate = startDate.toISOString();
-    const [tempError, setError] = useState('');
-    const [tempLoading, setloading] = useState(true);
+    const [battError, setError] = useState('');
+    const [battLoading, setloading] = useState(true);
     const fetchData = () => {
         axios
-            .get('api/metrics/' + props.device + '/temperature', {
+            .get('api/metrics/' + props.device + '/battery', {
                 params: { since: sinceDate },
             })
             .then((res) => {
-                console.log('[useTemperature]: fetchuje!');
-                setTempResult(res.data);
+                console.log('[useBattery]: fetchuje!');
+                setBattResult(res.data);
             })
             .catch((err) => {
                 setError(err);
@@ -47,5 +47,5 @@ export const useTemperature = (props: useTemperatureProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.timeRange]);
 
-    return { tempResult, tempError, tempLoading };
+    return { battResult, battError, battLoading };
 };

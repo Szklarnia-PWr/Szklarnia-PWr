@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-interface useTemperatureProps {
+interface useHumidityProps {
     // sinceDate: String;
     device: String;
     timeRange: rangesType;
 }
 
-export const useTemperature = (props: useTemperatureProps) => {
-    const [tempResult, setTempResult] = useState<Array<DataType>>([
+export const useHumidity = (props: useHumidityProps) => {
+    const [humiResult, setHumiResult] = useState<Array<DataType>>([
         { t: '0', v: 0 },
     ]);
     let startDate = new Date();
@@ -21,18 +21,18 @@ export const useTemperature = (props: useTemperatureProps) => {
     } else if (props.timeRange === 'year') {
         startDate.setMonth(startDate.getMonth() - 12);
     }
-    console.log('[useTemperature]: ', startDate.toISOString());
+    console.log('[useHumidity]: ', startDate.toISOString());
     let sinceDate = startDate.toISOString();
-    const [tempError, setError] = useState('');
-    const [tempLoading, setloading] = useState(true);
+    const [humiError, setError] = useState('');
+    const [humiLoading, setloading] = useState(true);
     const fetchData = () => {
         axios
-            .get('api/metrics/' + props.device + '/temperature', {
+            .get('api/metrics/' + props.device + '/humidity', {
                 params: { since: sinceDate },
             })
             .then((res) => {
-                console.log('[useTemperature]: fetchuje!');
-                setTempResult(res.data);
+                console.log('[useHumidity]: fetchuje!');
+                setHumiResult(res.data);
             })
             .catch((err) => {
                 setError(err);
@@ -47,5 +47,5 @@ export const useTemperature = (props: useTemperatureProps) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.timeRange]);
 
-    return { tempResult, tempError, tempLoading };
+    return { humiResult, humiError, humiLoading };
 };

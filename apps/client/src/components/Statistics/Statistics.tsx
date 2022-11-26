@@ -2,7 +2,12 @@ import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 import { Charts, Highscores, TimeSwitch } from '../../components';
-import { useTemperature } from '../../hooks';
+import {
+    useBattery,
+    useHumidity,
+    usePressure,
+    useTemperature,
+} from '../../hooks';
 
 const highs: Array<HighsType> = [
     {
@@ -38,7 +43,7 @@ const highs: Array<HighsType> = [
 export const Statistics = () => {
     const [timeRange, setTimeRange] = useState<rangesType>('week');
     const device = 'esp32_c13';
-    const { tempResult, loading, error } = useTemperature({
+    const { tempResult, tempLoading, tempError } = useTemperature({
         // sinceDate: startDate.toISOString(),
         device: device,
         timeRange: timeRange,
@@ -49,38 +54,77 @@ export const Statistics = () => {
             v: 0,
         },
     ]);
-    let startDate = new Date();
-    if (timeRange === 'day') {
-        startDate.setDate(startDate.getDay() - 1);
-    } else if (timeRange === 'week') {
-        startDate.setDate(startDate.getDate() - 7);
-    } else if (timeRange === 'month') {
-        startDate.setMonth(startDate.getMonth() - 1);
-    } else if (timeRange === 'year') {
-        startDate.setMonth(startDate.getMonth() - 12);
-    }
-    console.log(startDate.toISOString());
+
+    const { humiResult, humiLoading, humiError } = useHumidity({
+        // sinceDate: startDate.toISOString(),
+        device: device,
+        timeRange: timeRange,
+    });
+    const [humidityData, setHumidityData] = useState<Array<DataType>>([
+        {
+            t: '0',
+            v: 0,
+        },
+    ]);
+
+    const { pressResult, pressLoading, pressError } = usePressure({
+        // sinceDate: startDate.toISOString(),
+        device: device,
+        timeRange: timeRange,
+    });
+    const [pressureData, setPressureData] = useState<Array<DataType>>([
+        {
+            t: '0',
+            v: 0,
+        },
+    ]);
+
+    const { battResult, battLoading, battError } = useBattery({
+        // sinceDate: startDate.toISOString(),
+        device: device,
+        timeRange: timeRange,
+    });
+    const [batteryData, setBatteryData] = useState<Array<DataType>>([
+        {
+            t: '0',
+            v: 0,
+        },
+    ]);
 
     useEffect(() => {
         if (tempResult !== null) {
             setTemperatureData(tempResult);
-            console.log(temperatureData);
+        }
+        if (humiResult !== null) {
+            setHumidityData(humiResult);
+        }
+        if (pressResult !== null) {
+            setPressureData(pressResult);
+        }
+        if (battResult !== null) {
+            setBatteryData(battResult);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [tempResult]);
+    }, [tempResult, humiResult, pressResult, battResult]);
 
     return (
         <Box sx={{ marginBottom: '5rem', marginTop: '2rem', marginX: '0' }}>
-            {loading}
-            {error}
+            {tempLoading}
+            {tempError}
+            {humiLoading}
+            {humiError}
+            {pressLoading}
+            {pressError}
+            {battLoading}
+            {battError}
             <TimeSwitch timeRange={timeRange} setRange={setTimeRange} />
             <Highscores timeRange={timeRange} highs={highs} />
             <Charts
                 timeRange={timeRange}
                 temperatureData={temperatureData}
-                humidityData={temperatureData}
-                pressureData={temperatureData}
-                batteryData={temperatureData}
+                humidityData={humidityData}
+                pressureData={pressureData}
+                batteryData={batteryData}
                 highs={highs}
             />
         </Box>
