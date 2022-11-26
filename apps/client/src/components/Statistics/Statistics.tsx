@@ -4,34 +4,6 @@ import { useEffect, useState } from 'react';
 import { Charts, Highscores, TimeSwitch } from '../../components';
 import { useTemperature } from '../../hooks';
 
-const weekDay = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-const monthNames = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-];
-
-const dateToString = (tmstmp: Date, tmrng: rangesType) => {
-    if (tmrng === 'day') {
-        return tmstmp.getHours() + ':' + tmstmp.getMinutes();
-    } else if (tmrng === 'week') {
-        return weekDay[tmstmp.getDay()];
-    } else {
-        return (
-            monthNames[tmstmp.getMonth()] + ' ' + tmstmp.getDate().toString()
-        );
-    }
-};
-
 const highs: Array<HighsType> = [
     {
         parameter: 'Temperature [°C]',

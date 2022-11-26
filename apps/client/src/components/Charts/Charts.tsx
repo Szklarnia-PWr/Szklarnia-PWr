@@ -26,7 +26,39 @@ interface ChartsProps {
     highs: Array<HighsType>;
 }
 
+const weekDay = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const monthNames = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+];
+
+const dateToString = (tmstmp: Date, tmrng: rangesType) => {
+    if (tmrng === 'day') {
+        return tmstmp.getHours() + ':' + tmstmp.getMinutes();
+    } else if (tmrng === 'week') {
+        return weekDay[tmstmp.getDay()];
+    } else {
+        return (
+            monthNames[tmstmp.getMonth()] + ' ' + tmstmp.getDate().toString()
+        );
+    }
+};
+
 export const Charts = (props: ChartsProps) => {
+    const formatXAxis = (d: number) => {
+        return dateToString(new Date(d), props.timeRange);
+    };
+
     const theme = useTheme();
     return (
         <Container maxWidth='xl'>
@@ -64,7 +96,11 @@ export const Charts = (props: ChartsProps) => {
                             </linearGradient>
                         </defs>
                         <CartesianGrid strokeDasharray='3 3' />
-                        <XAxis scale='time' dataKey='t' />
+                        <XAxis
+                            scale='time'
+                            dataKey='t'
+                            tickFormatter={formatXAxis}
+                        />
                         <YAxis />
                         <Tooltip />
                         <Area
@@ -125,7 +161,11 @@ export const Charts = (props: ChartsProps) => {
                         }}
                     >
                         <CartesianGrid strokeDasharray='3 3' />
-                        <XAxis scale='time' dataKey='t' />
+                        <XAxis
+                            scale='time'
+                            dataKey='t'
+                            tickFormatter={formatXAxis}
+                        />
                         <YAxis />
                         <Tooltip />
                         <Area
@@ -186,7 +226,11 @@ export const Charts = (props: ChartsProps) => {
                         }}
                     >
                         <CartesianGrid strokeDasharray='3 3' />
-                        <XAxis scale='time' dataKey='t' />
+                        <XAxis
+                            scale='time'
+                            dataKey='t'
+                            tickFormatter={formatXAxis}
+                        />
                         <YAxis />
                         <Tooltip />
                         <Area
@@ -247,7 +291,11 @@ export const Charts = (props: ChartsProps) => {
                         }}
                     >
                         <CartesianGrid strokeDasharray='3 3' />
-                        <XAxis scale='time' dataKey='t' />
+                        <XAxis
+                            scale='time'
+                            dataKey='t'
+                            tickFormatter={formatXAxis}
+                        />
                         <YAxis />
                         <Tooltip />
                         <Area
