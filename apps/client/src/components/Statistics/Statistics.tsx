@@ -38,20 +38,10 @@ const highs: Array<HighsType> = [
 export const Statistics = () => {
     const [timeRange, setTimeRange] = useState<rangesType>('week');
     const device = 'esp32_c13';
-    let startDate = new Date();
-    if (timeRange === 'day') {
-        startDate.setDate(startDate.getDay() - 1);
-    } else if (timeRange === 'week') {
-        startDate.setDate(startDate.getDay() - 7);
-    } else if (timeRange === 'month') {
-        startDate.setDate(startDate.getMonth() - 1);
-    } else if (timeRange === 'year') {
-        startDate.setDate(startDate.getMonth() - 12);
-    }
-    console.log(startDate.toISOString());
     const { tempResult, loading, error } = useTemperature({
-        sinceDate: startDate.toISOString(),
+        // sinceDate: startDate.toISOString(),
         device: device,
+        timeRange: timeRange,
     });
     const [temperatureData, setTemperatureData] = useState<Array<DataType>>([
         {
@@ -59,65 +49,25 @@ export const Statistics = () => {
             v: 0,
         },
     ]);
+    let startDate = new Date();
+    if (timeRange === 'day') {
+        startDate.setDate(startDate.getDay() - 1);
+    } else if (timeRange === 'week') {
+        startDate.setDate(startDate.getDate() - 7);
+    } else if (timeRange === 'month') {
+        startDate.setMonth(startDate.getMonth() - 1);
+    } else if (timeRange === 'year') {
+        startDate.setMonth(startDate.getMonth() - 12);
+    }
+    console.log(startDate.toISOString());
 
     useEffect(() => {
         if (tempResult !== null) {
             setTemperatureData(tempResult);
             console.log(temperatureData);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tempResult]);
-
-    // const data: Array<DataType> = [
-    //     {
-    //         time: dateToString(new Date(1665172194 * 1000), timeRange),
-    //         Temperature: -1,
-    //         Humidity: -1,
-    //         Pressure: -1,
-    //         Battery: -1,
-    //     },
-    //     {
-    //         time: dateToString(new Date(1665172194 * 1000), timeRange),
-    //         Temperature: -1,
-    //         Humidity: -1,
-    //         Pressure: -1,
-    //         Battery: -1,
-    //     },
-    //     {
-    //         time: dateToString(new Date(1665172194 * 1000), timeRange),
-    //         Temperature: -1,
-    //         Humidity: -1,
-    //         Pressure: -1,
-    //         Battery: -1,
-    //     },
-    //     {
-    //         time: dateToString(new Date(1665172194 * 1000), timeRange),
-    //         Temperature: -1,
-    //         Humidity: -1,
-    //         Pressure: -1,
-    //         Battery: -1,
-    //     },
-    //     {
-    //         time: dateToString(new Date(1665172194 * 1000), timeRange),
-    //         Temperature: -1,
-    //         Humidity: -1,
-    //         Pressure: -1,
-    //         Battery: -1,
-    //     },
-    //     {
-    //         time: dateToString(new Date(1665172194 * 1000), timeRange),
-    //         Temperature: -1,
-    //         Humidity: -1,
-    //         Pressure: -1,
-    //         Battery: -1,
-    //     },
-    //     {
-    //         time: dateToString(new Date(1665172194 * 1000), timeRange),
-    //         Temperature: -1,
-    //         Humidity: -1,
-    //         Pressure: -1,
-    //         Battery: -1,
-    //     },
-    // ];
 
     return (
         <Box sx={{ marginBottom: '5rem', marginTop: '2rem', marginX: '0' }}>
